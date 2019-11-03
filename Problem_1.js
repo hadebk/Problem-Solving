@@ -18,12 +18,12 @@ function lowerPositive(arr){
 
   for (let i = 0 ; i < sortArr.length ; i++){
 
-    if (sortArr[i]+1 !== sortArr[i+1] && Math.sign(sortArr[i]) == 1){
-      // missing lower positive num inside  sortArr
-      return sortArr[i]+1
-    }else if(i == sortArr.length-1 && Math.sign(sortArr[sortArr.length-1]) == 1){
+    if(i == sortArr.length-1 && Math.sign(sortArr[sortArr.length-1]) == 1){
       // when arrive to last index and it is positive
       return sortArr[sortArr.length-1]+1
+    }else if (sortArr[i]+1 !== sortArr[i+1] && Math.sign(sortArr[i]) == 1){
+      // missing lower positive num inside  sortArr
+      return sortArr[i]+1
     }
 
   }
