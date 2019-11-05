@@ -9,24 +9,34 @@ For example, the input [3, 4, -1, 1] should give 2. The input [1, 2, 0] should g
 // The solution:
 
 function lowerPositive(arr){
-  let sortArr = arr.sort();
 
-  if(Math.sign(sortArr[sortArr.length-1]) == -1 || sortArr[sortArr.length-1] == 0){
-    // if all values in arr are negative or last index is 0
-    return 1
-  }
-
-  for (let i = 0 ; i < sortArr.length ; i++){
-
-    if(i == sortArr.length-1 && Math.sign(sortArr[sortArr.length-1]) == 1){
-      // when arrive to last index and it is positive
-      return sortArr[sortArr.length-1]+1
-    }else if (sortArr[i]+1 !== sortArr[i+1] && Math.sign(sortArr[i]) == 1){
-      // missing lower positive num inside  sortArr
-      return sortArr[i]+1
+  // delete negative value
+  let posArr =[];
+  for (let i = 0 ; i < arr.length ; i++){
+    if(Math.sign(arr[i]) == 1){
+      posArr.push(arr[i])
     }
-
   }
+  
+  // if there is positive num
+  if (posArr.length > 0){
+       // to sort multi digit num
+      const numberSorter = (a, b) => a - b;
+      var sortArr = posArr.sort(numberSorter)
+  
+      if (sortArr[0] !== 1) return 1;
+    
+      for (let i = 0 ; i < sortArr.length ; i++){
+        if(i == sortArr.length-1){
+          // when arrive to last index and it is positive
+          return sortArr[sortArr.length-1]+1
+        }else if (sortArr[i]+1 !== sortArr[i+1]){
+          // missing lower positive num inside  sortArr
+          return sortArr[i]+1
+        }
+      }
+    
+  }else return 1
 }
 
 var x = lowerPositive([1,8,6,2,3])
