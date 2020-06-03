@@ -9,11 +9,11 @@ in the clockwise direction each time we click the middle button.
 
 // Solution
 
-var ids = [1,2,3,4,5,6,7,8,9]
+var idsArr = [1,2,3,4,5,6,7,8,9]
 
 const box = document.getElementById('box')
 
-for(let i=1 ; i<=ids.length ; i++){
+for(let i=1 ; i<=idsArr.length ; i++){
   let btn=document.createElement('button');
   btn.id = 'btn'+i;
   btn.innerHTML = i;
@@ -22,7 +22,8 @@ for(let i=1 ; i<=ids.length ; i++){
 
 const btn5 = document.getElementById('btn5');
 
-const outerNums = [1,2,3,6,9,8,7,4];
+var outerNums = [1,2,3,6,9,8,7,4];
+const ids = [1,2,3,6,9,8,7,4];
 
 btn5.addEventListener("click", function() {
   outerNums.unshift(outerNums.pop());
